@@ -84,7 +84,7 @@
 		</a>
 	</div>
 	<div class="kira-count">
-		<div><span>文章</span>2</div>
+		<div><span>文章</span>3</div>
 		<div><span>标签</span>1</div>
 		<div><span>分类</span>0</div>
 	</div>
@@ -242,7 +242,7 @@
 			文章归档
 		</h3>
 		<div class="kira-widget">
-			<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/">2025</a><span class="archive-list-count">2</span></li></ul>
+			<ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/">2025</a><span class="archive-list-count">3</span></li></ul>
 		</div>
 	</div>
 
@@ -341,8 +341,8 @@
 		
 		<div class="kira-post-meta kira-rainbow" style="margin:10px 0!important;">
 			<a><i class="kirafont icon-calendar-fill"></i>2025年02月23日</a>
-			<a><i class="kirafont icon-edit-fill"></i>639 字</a>
-			<a><i class="kirafont icon-time-circle-fill"></i>大概 2 分钟</a>
+			<a><i class="kirafont icon-edit-fill"></i>813 字</a>
+			<a><i class="kirafont icon-time-circle-fill"></i>大概 3 分钟</a>
 		</div>
 		<html><head></head><body><h3><span id="%E5%89%8D%E8%A8%80">前言</span></h3><p>这是本项目第一次正式开工。首先可以学习一下别人的项目结构与原理，然后再自己开始写自己的项目。这篇文章主要是围绕<a target="_blank" rel="noopener" href="https://github.com/Open-LLM-VTuber/Open-LLM-VTuber">Open-LLM-Vtuber</a>的部署进行记录</p>
 <h2><span id=""></span></h2><p>该项目的官方部署教程<a target="_blank" rel="noopener" href="https://docs.llmvtuber.com/docs/quick-start/">点击这里跳转</a> </p>
@@ -368,9 +368,12 @@
 <p><img data-fancybox="gallery" data-sizes="auto" data-src="/imgs/First_Vtuber.png" alt="Vtuber" class="lazyload"></p>
 <p>最后在conf.yaml中修改了接入Deepseek，然后在Deepseek官网那里建了一个Api，接进去了，最后也是成功说话了。不过有2个地方我不是很满意。第一点是我希望能够替换成米塔的live2d模型，第二点是我希望她的音色可以是米塔。这2点我接下来将会尝试一一解决。</p>
 <h2><span id=""></span></h2><h3><span id="%E7%B1%B3%E5%A1%94live2d%E6%A8%A1%E5%9E%8B">米塔Live2d模型</span></h3><p>我在<a target="_blank" rel="noopener" href="https://www.aplaybox.com/model/model">模之屋</a>和<a target="_blank" rel="noopener" href="https://github.com/Eikanya/Live2d-model/tree/master/Live2D">Eikanya<br>Live2d-model</a> 没有找到米塔Live2d模型。但是非常幸运的是，一周前恰好某个工作室在<a target="_blank" rel="noopener" href="https://gf.bilibili.com/item/detail/1108578100?noTitleBar=1&amp;from=mall-up_itemDetail&amp;msource=cps_comments_32882787_cont-1-113843325966690&amp;track_id=__BGMT__">B站</a>免费开放了他们的米塔live2d模型。所以我直接花0.01闷拿下！！</p>
-<p>然后直接参考官方教程的改法，将米塔的live2d文件中的model3.json修改为最终项目的json。但是有一些问题，就是我没有修改动作映射的参数，只有idle状态的映射是成功对应的。最终效果如下所示：</p>
+<p>然后直接参考官方教程的改法，将米塔的live2d文件中的model3.json修改为最终项目的json。但是有一些问题，就是我没有修改动作映射的参数，只有idle状态的映射与唇形同步是成功对应的。最终效果如下所示：</p>
 <p><img data-fancybox="gallery" data-sizes="auto" data-src="/imgs/First_miside.png" alt="第一次米塔" class="lazyload"></p>
 <p>为了成功地把动作映射修改对，我们有必要恶补一些live2d的专业知识（呃啊啊我还不是很了解这方面的）</p>
+<h3><span id="pixi-live2d-display-lipsyncpatch">pixi-live2d-display-lipsyncpatch</span></h3><p>一个增强和修补 PixiJS 与 Live2D 显示功能的库或插件。特别专注于实现更精确的唇形同步（Lip Sync）效果。</p>
+<h3><span id="pixijs">PixiJS</span></h3><p>是一个高性能的 2D 渲染引擎，适合用于 WebGL 和 HTML5 Canvas 渲染。</p>
+<h3><span id="webgl">WebGL</span></h3><p>WebGL（Web Graphics Library）是一种基于浏览器的3D图形渲染技术，它让开发者能够直接利用硬件加速（GPU）在网页上渲染复杂的2D和3D图形，而不需要安装任何额外的插件或软件。WebGL是作为一种低级JavaScript API设计的，并与HTML5的canvas元素紧密结合，为网络应用提供了强大的图形处理能力。</p>
 </body></html>
 	</article>
 
