@@ -389,7 +389,69 @@
             text-decoration: none;
         }
 
-        /* ── RESPONSIVE ── */
+        /* Awards */
+        .award-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+        }
+
+        .award-item {
+            display: flex;
+            align-items: baseline;
+            gap: 0.8rem;
+            padding: 0.55rem 0.9rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 7px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .award-item:hover {
+            border-color: rgba(42,82,152,0.25);
+            box-shadow: 0 2px 8px rgba(26,58,92,0.06);
+        }
+
+        .award-year {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 0.04em;
+            flex-shrink: 0;
+            width: 36px;
+        }
+
+        .award-name {
+            font-size: 0.87rem;
+            color: var(--text);
+            font-weight: 500;
+            flex: 1;
+        }
+
+        .award-tag {
+            font-size: 0.68rem;
+            padding: 0.1rem 0.5rem;
+            border-radius: 20px;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .award-tag.academic {
+            background: rgba(42,82,152,0.1);
+            color: var(--primary-light);
+        }
+
+        .award-tag.competition {
+            background: rgba(184,150,78,0.13);
+            color: var(--accent);
+        }
+
+        .award-tag.scholarship {
+            background: rgba(40,140,80,0.1);
+            color: #2a7a48;
+        }
+
+        /* ── RESPONSIVE ──*/
         @media (max-width: 680px) {
             .page {
                 grid-template-columns: 1fr;
@@ -419,6 +481,7 @@
         <li><a href="#about">关于</a></li>
         <li><a href="#education">教育</a></li>
         <li><a href="#research">研究</a></li>
+        <li><a href="#awards">荣誉</a></li>
         <li><a href="#lab">实验室</a></li>
     </ul>
 </nav>
@@ -515,6 +578,52 @@
                         <div class="research-title">神经符号 Agent（Neuro-symbolic Agent）</div>
                         <div class="research-desc">融合神经网络的感知能力与符号推理的可解释性，构建具有更强泛化性与推理能力的智能体系统。</div>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="awards">
+            <div class="sec-title">荣誉奖项</div>
+            <div class="award-list">
+                <div class="award-item">
+                    <div class="award-year">2026</div>
+                    <div class="award-name">AAAI 2026 Bridge LMReasoning Outstanding Paper Award</div>
+                    <span class="award-tag academic">学术论文</span>
+                </div>
+                <div class="award-item">
+                    <div class="award-year">2025</div>
+                    <div class="award-name">国家奖学金</div>
+                    <span class="award-tag scholarship">奖学金</span>
+                </div>
+                <div class="award-item">
+                    <div class="award-year">2025</div>
+                    <div class="award-name">美国大学生数学建模竞赛（MCM/ICM）M 奖</div>
+                    <span class="award-tag competition">竞赛</span>
+                </div>
+                <div class="award-item">
+                    <div class="award-year">2025</div>
+                    <div class="award-name">中国大学生服务外包创新创业大赛 国家级二等奖</div>
+                    <span class="award-tag competition">竞赛</span>
+                </div>
+                <div class="award-item">
+                    <div class="award-year">2024</div>
+                    <div class="award-name">人民奖学金</div>
+                    <span class="award-tag scholarship">奖学金</span>
+                </div>
+                <div class="award-item">
+                    <div class="award-year">2023</div>
+                    <div class="award-name">人民奖学金</div>
+                    <span class="award-tag scholarship">奖学金</span>
+                </div>
+                <div class="award-item">
+                    <div class="award-year">2023</div>
+                    <div class="award-name">网易雷火 Makers 最佳线下人气奖</div>
+                    <span class="award-tag competition">竞赛</span>
+                </div>
+                <div class="award-item">
+                    <div class="award-year">2023</div>
+                    <div class="award-name">网易雷火 Makers 最佳艺术表现提名奖</div>
+                    <span class="award-tag competition">竞赛</span>
                 </div>
             </div>
         </div>
