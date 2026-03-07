@@ -6,873 +6,526 @@
     <title>苏珉乐 | 南京大学</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         :root {
             --primary: #1a3a5c;
             --primary-light: #2a5298;
-            --accent: #c8a96e;
-            --accent-light: #e8c987;
+            --accent: #b8964e;
             --text: #1e2530;
             --text-muted: #5a6a7a;
-            --bg: #f8f6f1;
+            --bg: #f7f5f0;
             --bg-card: #ffffff;
-            --border: #e0d8cc;
-            --shadow: 0 4px 24px rgba(26,58,92,0.08);
-            --shadow-hover: 0 8px 40px rgba(26,58,92,0.15);
+            --border: #ddd8ce;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
 
         body {
             font-family: 'Inter', 'Noto Serif SC', sans-serif;
             background: var(--bg);
             color: var(--text);
-            line-height: 1.7;
+            line-height: 1.65;
+            font-size: 0.93rem;
         }
 
-        /* ===== NAV ===== */
+        /* ── NAV ── */
         nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            background: rgba(255,255,255,0.92);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
+            background: var(--primary);
             padding: 0 2rem;
-            height: 60px;
+            height: 48px;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .nav-brand {
             font-family: 'Noto Serif SC', serif;
             font-weight: 700;
-            font-size: 1.1rem;
-            color: var(--primary);
-            letter-spacing: 0.05em;
+            font-size: 1rem;
+            color: #fff;
+            letter-spacing: 0.06em;
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 1.6rem;
             list-style: none;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: var(--text-muted);
-            font-size: 0.88rem;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.82rem;
             font-weight: 500;
-            letter-spacing: 0.03em;
+            letter-spacing: 0.04em;
             transition: color 0.2s;
         }
 
-        .nav-links a:hover {
-            color: var(--primary);
-        }
+        .nav-links a:hover { color: #fff; }
 
-        /* ===== HERO ===== */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding: 80px 2rem 4rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background:
-                radial-gradient(ellipse 800px 600px at 80% 50%, rgba(42,82,152,0.06) 0%, transparent 70%),
-                radial-gradient(ellipse 600px 400px at 10% 80%, rgba(200,169,110,0.08) 0%, transparent 60%);
-            pointer-events: none;
-        }
-
-        .hero-container {
-            max-width: 1100px;
+        /* ── LAYOUT ── */
+        .page {
+            max-width: 960px;
             margin: 0 auto;
+            padding: 2.4rem 1.5rem 2rem;
             display: grid;
-            grid-template-columns: 1fr auto;
-            gap: 4rem;
-            align-items: center;
-            width: 100%;
+            grid-template-columns: 200px 1fr;
+            gap: 2.4rem;
+            align-items: start;
         }
 
-        .hero-text {
-            animation: fadeInUp 0.8s ease both;
-        }
-
-        .hero-label {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.8rem;
-            font-weight: 600;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-            color: var(--accent);
-            margin-bottom: 1.2rem;
-        }
-
-        .hero-label::before {
-            content: '';
-            width: 24px;
-            height: 2px;
-            background: var(--accent);
-            display: block;
-        }
-
-        .hero-name {
-            font-family: 'Noto Serif SC', serif;
-            font-size: clamp(2.8rem, 6vw, 4.5rem);
-            font-weight: 700;
-            color: var(--primary);
-            line-height: 1.15;
-            margin-bottom: 0.3rem;
-        }
-
-        .hero-name-en {
-            font-family: 'Inter', sans-serif;
-            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
-            font-weight: 300;
-            color: var(--text-muted);
-            letter-spacing: 0.15em;
-            margin-bottom: 1.8rem;
-        }
-
-        .hero-desc {
-            font-size: 1.05rem;
-            color: var(--text-muted);
-            max-width: 540px;
-            margin-bottom: 2.5rem;
-            line-height: 1.85;
-        }
-
-        .hero-desc strong {
-            color: var(--primary);
-            font-weight: 600;
-        }
-
-        .hero-links {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.7rem 1.6rem;
-            border-radius: 6px;
-            font-size: 0.88rem;
-            font-weight: 500;
-            text-decoration: none;
-            transition: all 0.25s;
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            color: #fff;
-            box-shadow: 0 2px 12px rgba(26,58,92,0.25);
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-light);
-            transform: translateY(-1px);
-            box-shadow: 0 4px 20px rgba(26,58,92,0.35);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--primary);
-            border: 1.5px solid var(--border);
-        }
-
-        .btn-outline:hover {
-            border-color: var(--primary);
-            background: rgba(26,58,92,0.04);
-            transform: translateY(-1px);
-        }
-
-        .hero-avatar {
-            animation: fadeInRight 0.8s ease 0.2s both;
+        /* ── SIDEBAR ── */
+        .sidebar {
+            position: sticky;
+            top: 64px;
         }
 
         .avatar-frame {
-            width: 220px;
-            height: 220px;
-            border-radius: 50%;
+            width: 160px;
+            height: 160px;
+            border-radius: 12px;
             background: linear-gradient(135deg, var(--primary-light), var(--primary));
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: var(--shadow-hover), 0 0 0 8px rgba(200,169,110,0.15), 0 0 0 16px rgba(200,169,110,0.06);
-            position: relative;
+            margin-bottom: 1.2rem;
+            box-shadow: 0 4px 20px rgba(26,58,92,0.18);
         }
 
         .avatar-initials {
             font-family: 'Noto Serif SC', serif;
-            font-size: 3rem;
+            font-size: 2.8rem;
             font-weight: 700;
-            color: rgba(255,255,255,0.95);
-            letter-spacing: 0.1em;
+            color: rgba(255,255,255,0.92);
         }
 
-        /* ===== SECTIONS ===== */
-        section {
-            padding: 5rem 2rem;
-        }
-
-        section:nth-child(even) {
-            background: var(--bg-card);
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            margin-bottom: 3rem;
-        }
-
-        .section-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.75rem;
-            font-weight: 700;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--accent);
-            margin-bottom: 0.6rem;
-        }
-
-        .section-title {
+        .sidebar-name {
             font-family: 'Noto Serif SC', serif;
-            font-size: 2rem;
+            font-size: 1.35rem;
             font-weight: 700;
             color: var(--primary);
-        }
-
-        .section-divider {
-            width: 48px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent), var(--accent-light));
-            margin-top: 0.8rem;
-            border-radius: 2px;
-        }
-
-        /* ===== ABOUT ===== */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 3fr 2fr;
-            gap: 3rem;
-            align-items: start;
-        }
-
-        .about-text p {
-            color: var(--text-muted);
-            margin-bottom: 1.2rem;
-            font-size: 1rem;
-            line-height: 1.9;
-        }
-
-        .about-text p strong {
-            color: var(--primary);
-        }
-
-        .info-card {
-            background: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 1.6rem;
-        }
-
-        .info-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.9rem;
-            padding: 0.8rem 0;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .info-item:last-child {
-            border-bottom: none;
-        }
-
-        .info-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 8px;
-            background: rgba(26,58,92,0.08);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            font-size: 0.85rem;
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
-
-        .info-label {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            font-weight: 500;
-            letter-spacing: 0.04em;
             margin-bottom: 0.15rem;
         }
 
-        .info-value {
-            font-size: 0.9rem;
-            color: var(--text);
-            font-weight: 500;
-        }
-
-        /* ===== EDUCATION ===== */
-        .timeline {
-            position: relative;
-            padding-left: 2rem;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 8px;
-            bottom: 8px;
-            width: 2px;
-            background: linear-gradient(180deg, var(--primary-light), var(--accent));
-            border-radius: 2px;
-        }
-
-        .timeline-item {
-            position: relative;
-            margin-bottom: 2.5rem;
-            animation: fadeInUp 0.6s ease both;
-        }
-
-        .timeline-item:last-child {
-            margin-bottom: 0;
-        }
-
-        .timeline-dot {
-            position: absolute;
-            left: -2.45rem;
-            top: 6px;
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background: var(--bg-card);
-            border: 2.5px solid var(--primary-light);
-            box-shadow: 0 0 0 4px rgba(42,82,152,0.1);
-        }
-
-        .timeline-dot.current {
-            border-color: var(--accent);
-            box-shadow: 0 0 0 4px rgba(200,169,110,0.2);
-        }
-
-        .timeline-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 1.6rem 2rem;
-            transition: all 0.3s;
-        }
-
-        section:nth-child(even) .timeline-card {
-            background: var(--bg);
-        }
-
-        .timeline-card:hover {
-            box-shadow: var(--shadow);
-            transform: translateX(4px);
-            border-color: rgba(42,82,152,0.2);
-        }
-
-        .timeline-period {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            font-size: 0.78rem;
-            font-weight: 600;
-            color: var(--accent);
-            letter-spacing: 0.06em;
-            margin-bottom: 0.6rem;
-        }
-
-        .timeline-period .badge {
-            background: rgba(200,169,110,0.15);
-            color: var(--accent);
-            padding: 0.15rem 0.6rem;
-            border-radius: 20px;
-            font-size: 0.72rem;
-        }
-
-        .timeline-degree {
-            font-family: 'Noto Serif SC', serif;
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 0.3rem;
-        }
-
-        .timeline-school {
-            font-size: 0.92rem;
+        .sidebar-name-en {
+            font-size: 0.8rem;
             color: var(--text-muted);
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .sidebar-meta {
+            list-style: none;
             display: flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
-
-        /* ===== RESEARCH ===== */
-        .research-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .research-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 2rem;
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .research-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--primary-light), var(--accent));
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
-
-        .research-card:hover {
-            box-shadow: var(--shadow-hover);
-            transform: translateY(-4px);
-            border-color: rgba(42,82,152,0.15);
-        }
-
-        .research-card:hover::before {
-            opacity: 1;
-        }
-
-        .research-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            background: linear-gradient(135deg, rgba(42,82,152,0.12), rgba(42,82,152,0.06));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            color: var(--primary-light);
+            flex-direction: column;
+            gap: 0.55rem;
             margin-bottom: 1.2rem;
         }
 
-        .research-title {
+        .sidebar-meta li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        .sidebar-meta li i {
+            color: var(--accent);
+            font-size: 0.75rem;
+            margin-top: 2px;
+            flex-shrink: 0;
+            width: 14px;
+        }
+
+        .sidebar-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .sidebar-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            font-size: 0.8rem;
+            color: var(--primary-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .sidebar-link:hover { color: var(--accent); }
+
+        /* ── MAIN ── */
+        .main { min-width: 0; }
+
+        .section { margin-bottom: 2rem; }
+
+        .section:last-child { margin-bottom: 0; }
+
+        .sec-title {
             font-family: 'Noto Serif SC', serif;
-            font-size: 1.05rem;
+            font-size: 1rem;
             font-weight: 700;
             color: var(--primary);
-            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 0.9rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .sec-title::before {
+            content: '';
+            width: 3px;
+            height: 1em;
+            background: var(--accent);
+            border-radius: 2px;
+            display: block;
+        }
+
+        /* About */
+        .about-text {
+            color: var(--text-muted);
+            line-height: 1.8;
+            font-size: 0.9rem;
+        }
+
+        .about-text strong { color: var(--primary); font-weight: 600; }
+
+        /* Education */
+        .edu-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+        }
+
+        .edu-item {
+            display: grid;
+            grid-template-columns: 140px 1fr;
+            gap: 0.8rem;
+            align-items: start;
+            padding: 0.75rem 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .edu-item:hover {
+            border-color: rgba(42,82,152,0.3);
+            box-shadow: 0 2px 10px rgba(26,58,92,0.07);
+        }
+
+        .edu-period {
+            font-size: 0.78rem;
+            color: var(--accent);
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            line-height: 1.4;
+            padding-top: 1px;
+        }
+
+        .edu-right {}
+
+        .edu-degree {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.9rem;
+            margin-bottom: 0.15rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .badge {
+            font-size: 0.68rem;
+            font-weight: 600;
+            padding: 0.1rem 0.5rem;
+            border-radius: 20px;
+            background: rgba(184,150,78,0.15);
+            color: var(--accent);
+            letter-spacing: 0.02em;
+        }
+
+        .badge.done {
+            background: rgba(90,106,122,0.1);
+            color: var(--text-muted);
+        }
+
+        .edu-school {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+
+        /* Research */
+        .research-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .research-item {
+            display: flex;
+            gap: 0.9rem;
+            align-items: flex-start;
+            padding: 0.75rem 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .research-item:hover {
+            border-color: rgba(42,82,152,0.3);
+            box-shadow: 0 2px 10px rgba(26,58,92,0.07);
+        }
+
+        .research-icon {
+            width: 34px;
+            height: 34px;
+            border-radius: 8px;
+            background: rgba(42,82,152,0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-light);
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .research-body {}
+
+        .research-title {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.9rem;
+            margin-bottom: 0.2rem;
         }
 
         .research-desc {
-            font-size: 0.9rem;
+            font-size: 0.82rem;
             color: var(--text-muted);
-            line-height: 1.75;
+            line-height: 1.6;
         }
 
-        /* ===== LAB ===== */
-        .lab-section {
-            text-align: center;
-        }
-
-        .lab-badge {
-            display: inline-flex;
-            flex-direction: column;
-            align-items: center;
+        /* Lab */
+        .lab-item {
+            display: flex;
             gap: 1rem;
+            align-items: center;
+            padding: 0.9rem 1.1rem;
             background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 3rem 4rem;
-            box-shadow: var(--shadow);
-            position: relative;
-            overflow: hidden;
+            border-radius: 8px;
+            border-left: 3px solid var(--accent);
         }
 
-        .lab-badge::before {
-            content: '';
-            position: absolute;
-            top: -60px; right: -60px;
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(200,169,110,0.1) 0%, transparent 70%);
-        }
-
-        .lab-logo {
-            width: 80px;
-            height: 80px;
-            border-radius: 20px;
+        .lab-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
             background: linear-gradient(135deg, var(--primary), var(--primary-light));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
             color: #fff;
-            box-shadow: 0 8px 24px rgba(26,58,92,0.25);
+            font-size: 1rem;
+            flex-shrink: 0;
         }
+
+        .lab-info {}
 
         .lab-name {
-            font-family: 'Noto Serif SC', serif;
-            font-size: 1.8rem;
             font-weight: 700;
+            font-size: 0.95rem;
             color: var(--primary);
+            margin-bottom: 0.1rem;
         }
 
-        .lab-full {
-            font-size: 0.95rem;
+        .lab-sub {
+            font-size: 0.78rem;
             color: var(--text-muted);
+            margin-bottom: 0.45rem;
         }
 
         .lab-tags {
             display: flex;
-            gap: 0.6rem;
+            gap: 0.4rem;
             flex-wrap: wrap;
-            justify-content: center;
-            margin-top: 0.5rem;
         }
 
         .lab-tag {
+            font-size: 0.72rem;
+            padding: 0.15rem 0.55rem;
+            border-radius: 20px;
             background: rgba(26,58,92,0.07);
             color: var(--primary);
-            padding: 0.3rem 0.9rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
             font-weight: 500;
         }
 
-        /* ===== FOOTER ===== */
+        /* ── FOOTER ── */
         footer {
             background: var(--primary);
-            color: rgba(255,255,255,0.6);
+            color: rgba(255,255,255,0.55);
             text-align: center;
-            padding: 2.5rem 1rem;
-            font-size: 0.85rem;
+            padding: 1.2rem 1rem;
+            font-size: 0.78rem;
         }
 
+        footer strong { color: rgba(255,255,255,0.85); }
+
         footer a {
-            color: var(--accent-light);
+            color: rgba(255,255,255,0.6);
             text-decoration: none;
         }
 
-        footer strong {
-            color: rgba(255,255,255,0.9);
-        }
-
-        /* ===== ANIMATIONS ===== */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInRight {
-            from {
-                opacity: 0;
-                transform: translateX(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 768px) {
-            .hero-container {
+        /* ── RESPONSIVE ── */
+        @media (max-width: 680px) {
+            .page {
                 grid-template-columns: 1fr;
+                padding: 1.5rem 1rem;
+            }
+
+            .sidebar {
+                position: static;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
                 text-align: center;
             }
 
-            .hero-avatar {
-                order: -1;
-                display: flex;
-                justify-content: center;
-            }
+            .sidebar-meta li { justify-content: center; }
+            .sidebar-links { align-items: center; }
 
-            .hero-links {
-                justify-content: center;
-            }
-
-            .hero-label {
-                justify-content: center;
-            }
-
-            .hero-desc {
-                margin: 0 auto 2.5rem;
-            }
-
-            .about-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .nav-links {
-                gap: 1.2rem;
-            }
-
-            .lab-badge {
-                padding: 2rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .nav-links li:not(:last-child):not(:nth-last-child(2)) {
-                display: none;
-            }
-
-            .avatar-frame {
-                width: 160px;
-                height: 160px;
-            }
-
-            .avatar-initials {
-                font-size: 2.2rem;
-            }
+            .edu-item { grid-template-columns: 1fr; gap: 0.3rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- NAV -->
-    <nav>
-        <div class="nav-brand">苏珉乐</div>
-        <ul class="nav-links">
-            <li><a href="#about">关于</a></li>
-            <li><a href="#education">教育经历</a></li>
-            <li><a href="#research">研究方向</a></li>
-            <li><a href="#lab">实验室</a></li>
+<nav>
+    <div class="nav-brand">苏珉乐</div>
+    <ul class="nav-links">
+        <li><a href="#about">关于</a></li>
+        <li><a href="#education">教育</a></li>
+        <li><a href="#research">研究</a></li>
+        <li><a href="#lab">实验室</a></li>
+    </ul>
+</nav>
+
+<div class="page">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="avatar-frame">
+            <span class="avatar-initials">苏</span>
+        </div>
+        <div class="sidebar-name">苏珉乐</div>
+        <div class="sidebar-name-en">Su Minle</div>
+
+        <ul class="sidebar-meta">
+            <li>
+                <i class="fa-solid fa-graduation-cap"></i>
+                <span>硕士研究生</span>
+            </li>
+            <li>
+                <i class="fa-solid fa-building-columns"></i>
+                <span>南京大学<br>智能科学与技术学院</span>
+            </li>
+            <li>
+                <i class="fa-solid fa-flask"></i>
+                <span>LAMDA 实验室</span>
+            </li>
+            <li>
+                <i class="fa-solid fa-map-marker-alt"></i>
+                <span>南京，中国</span>
+            </li>
         </ul>
-    </nav>
 
-    <!-- HERO -->
-    <section class="hero" id="home">
-        <div class="hero-container">
-            <div class="hero-text">
-                <div class="hero-label">Personal Homepage</div>
-                <h1 class="hero-name">苏珉乐</h1>
-                <div class="hero-name-en">Su Minle</div>
-                <p class="hero-desc">
-                    就读于<strong>南京大学智能科学与技术学院</strong>，
-                    隶属于 <strong>LAMDA 实验室</strong>。
-                    专注于<strong>强化学习</strong>与<strong>神经符号 Agent</strong> 方向的研究，
-                    致力于构建具有推理能力与泛化能力的智能体系统。
-                </p>
-                <div class="hero-links">
-                    <a href="#about" class="btn btn-primary">
-                        <i class="fa-solid fa-user"></i> 了解更多
-                    </a>
-                    <a href="mailto:suml@lamda.nju.edu.cn" class="btn btn-outline">
-                        <i class="fa-solid fa-envelope"></i> 联系我
-                    </a>
-                </div>
-            </div>
-            <div class="hero-avatar">
-                <div class="avatar-frame">
-                    <span class="avatar-initials">苏</span>
-                </div>
-            </div>
+        <div class="sidebar-links">
+            <a href="mailto:suml@lamda.nju.edu.cn" class="sidebar-link">
+                <i class="fa-solid fa-envelope"></i> suml@lamda.nju.edu.cn
+            </a>
         </div>
-    </section>
+    </aside>
 
-    <!-- ABOUT -->
-    <section id="about">
-        <div class="container">
-            <div class="section-header reveal">
-                <div class="section-tag"><i class="fa-solid fa-circle-dot"></i> About</div>
-                <h2 class="section-title">关于我</h2>
-                <div class="section-divider"></div>
-            </div>
-            <div class="about-grid">
-                <div class="about-text reveal">
-                    <p>
-                        你好！我是<strong>苏珉乐</strong>，南京大学智能科学与技术学院的学生。
-                        本科阶段在南京大学完成了计算机科学与人工智能方向的系统学习，
-                        现已进入研究生阶段，继续在同一学院深耕。
-                    </p>
-                    <p>
-                        我目前隶属于<strong>LAMDA 实验室</strong>（Learning And Mining from DatA），
-                        该实验室由周志华教授创立，是国内机器学习领域最具影响力的研究团队之一，
-                        长期专注于机器学习基础理论与应用研究。
-                    </p>
-                    <p>
-                        我对<strong>强化学习</strong>与<strong>神经符号 Agent</strong> 充满热情，
-                        希望通过将神经网络的感知能力与符号推理的可解释性相结合，
-                        探索更具通用性的智能体学习范式。
-                    </p>
-                </div>
-                <div class="info-card reveal">
-                    <div class="info-item">
-                        <div class="info-icon"><i class="fa-solid fa-graduation-cap"></i></div>
-                        <div>
-                            <div class="info-label">学院</div>
-                            <div class="info-value">智能科学与技术学院</div>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-icon"><i class="fa-solid fa-university"></i></div>
-                        <div>
-                            <div class="info-label">学校</div>
-                            <div class="info-value">南京大学</div>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-icon"><i class="fa-solid fa-flask"></i></div>
-                        <div>
-                            <div class="info-label">实验室</div>
-                            <div class="info-value">LAMDA 实验室</div>
-                        </div>
-                    </div>
-                    <div class="info-item">
-                        <div class="info-icon"><i class="fa-solid fa-map-marker-alt"></i></div>
-                        <div>
-                            <div class="info-label">所在地</div>
-                            <div class="info-value">南京，中国</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- MAIN -->
+    <main class="main">
+
+        <div class="section" id="about">
+            <div class="sec-title">关于我</div>
+            <p class="about-text">
+                你好！我是<strong>苏珉乐</strong>，南京大学智能科学与技术学院硕士研究生，
+                隶属于<strong>LAMDA 实验室</strong>（Learning And Mining from DatA，周志华教授团队）。
+                本科同样就读于南京大学智能科学与技术学院，具备扎实的人工智能理论基础。
+                目前专注于<strong>强化学习</strong>与<strong>神经符号 Agent</strong> 方向的研究，
+                致力于融合神经网络的感知能力与符号推理的可解释性，构建更具通用性的智能体学习范式。
+            </p>
         </div>
-    </section>
 
-    <!-- EDUCATION -->
-    <section id="education">
-        <div class="container">
-            <div class="section-header reveal">
-                <div class="section-tag"><i class="fa-solid fa-circle-dot"></i> Education</div>
-                <h2 class="section-title">教育经历</h2>
-                <div class="section-divider"></div>
-            </div>
-            <div class="timeline">
-                <div class="timeline-item reveal">
-                    <div class="timeline-dot current"></div>
-                    <div class="timeline-card">
-                        <div class="timeline-period">
-                            2026.9 — 至今
+        <div class="section" id="education">
+            <div class="sec-title">教育经历</div>
+            <div class="edu-list">
+                <div class="edu-item">
+                    <div class="edu-period">2026.9 — 至今</div>
+                    <div class="edu-right">
+                        <div class="edu-degree">
+                            硕士研究生
                             <span class="badge">在读</span>
                         </div>
-                        <div class="timeline-degree">硕士研究生</div>
-                        <div class="timeline-school">
-                            <i class="fa-solid fa-building-columns" style="color: var(--accent); font-size:0.8rem;"></i>
-                            南京大学 · 智能科学与技术学院
-                        </div>
+                        <div class="edu-school">南京大学 · 智能科学与技术学院</div>
                     </div>
                 </div>
-                <div class="timeline-item reveal">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-card">
-                        <div class="timeline-period">
-                            2022.9 — 2026.6
-                            <span class="badge">已毕业</span>
+                <div class="edu-item">
+                    <div class="edu-period">2022.9 — 2026.6</div>
+                    <div class="edu-right">
+                        <div class="edu-degree">
+                            本科
+                            <span class="badge done">已毕业</span>
                         </div>
-                        <div class="timeline-degree">本科</div>
-                        <div class="timeline-school">
-                            <i class="fa-solid fa-building-columns" style="color: var(--primary-light); font-size:0.8rem;"></i>
-                            南京大学 · 智能科学与技术学院
-                        </div>
+                        <div class="edu-school">南京大学 · 智能科学与技术学院</div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- RESEARCH -->
-    <section id="research">
-        <div class="container">
-            <div class="section-header reveal">
-                <div class="section-tag"><i class="fa-solid fa-circle-dot"></i> Research</div>
-                <h2 class="section-title">研究方向</h2>
-                <div class="section-divider"></div>
-            </div>
-            <div class="research-grid">
-                <div class="research-card reveal">
+        <div class="section" id="research">
+            <div class="sec-title">研究方向</div>
+            <div class="research-list">
+                <div class="research-item">
                     <div class="research-icon"><i class="fa-solid fa-chart-line"></i></div>
-                    <div class="research-title">强化学习</div>
-                    <div class="research-desc">
-                        研究智能体在与环境交互中学习最优决策的理论与算法，关注样本效率、探索策略与泛化能力等核心问题。
+                    <div class="research-body">
+                        <div class="research-title">强化学习（Reinforcement Learning）</div>
+                        <div class="research-desc">研究智能体在与环境交互中学习最优决策的理论与算法，关注样本效率、探索策略与泛化能力等核心问题。</div>
                     </div>
                 </div>
-                <div class="research-card reveal">
+                <div class="research-item">
                     <div class="research-icon"><i class="fa-solid fa-diagram-project"></i></div>
-                    <div class="research-title">神经符号 Agent</div>
-                    <div class="research-desc">
-                        融合神经网络的感知能力与符号推理的可解释性，构建具有更强泛化性与推理能力的智能体系统。
+                    <div class="research-body">
+                        <div class="research-title">神经符号 Agent（Neuro-symbolic Agent）</div>
+                        <div class="research-desc">融合神经网络的感知能力与符号推理的可解释性，构建具有更强泛化性与推理能力的智能体系统。</div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- LAB -->
-    <section id="lab">
-        <div class="container">
-            <div class="section-header reveal" style="text-align:center;">
-                <div class="section-tag" style="justify-content:center;"><i class="fa-solid fa-circle-dot"></i> Laboratory</div>
-                <h2 class="section-title">所属实验室</h2>
-                <div class="section-divider" style="margin: 0.8rem auto 0;"></div>
-            </div>
-            <div class="lab-section">
-                <div class="lab-badge reveal">
-                    <div class="lab-logo"><i class="fa-solid fa-atom"></i></div>
+        <div class="section" id="lab">
+            <div class="sec-title">所属实验室</div>
+            <div class="lab-item">
+                <div class="lab-icon"><i class="fa-solid fa-atom"></i></div>
+                <div class="lab-info">
                     <div class="lab-name">LAMDA 实验室</div>
-                    <div class="lab-full">Learning And Mining from DatA</div>
-                    <div class="lab-full" style="color: var(--text-muted); font-size:0.88rem; margin-top:-0.3rem;">
-                        南京大学 · 周志华教授团队
-                    </div>
+                    <div class="lab-sub">Learning And Mining from DatA &nbsp;·&nbsp; 南京大学 · 周志华教授团队</div>
                     <div class="lab-tags">
                         <span class="lab-tag">强化学习</span>
                         <span class="lab-tag">神经符号 Agent</span>
@@ -882,50 +535,14 @@
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- FOOTER -->
-    <footer>
-        <p>
-            &copy; 2026 <strong>苏珉乐</strong> &nbsp;·&nbsp;
-            南京大学智能科学与技术学院 &nbsp;·&nbsp;
-            LAMDA 实验室
-        </p>
-        <p style="margin-top:0.5rem; font-size:0.78rem;">
-            Hosted on <a href="https://pages.github.com" target="_blank" rel="noopener">GitHub Pages</a>
-        </p>
-    </footer>
+    </main>
+</div>
 
-    <script>
-        // Scroll reveal
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, i) => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.classList.add('visible');
-                    }, i * 80);
-                }
-            });
-        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+<footer>
+    &copy; 2026 <strong>苏珉乐</strong> &nbsp;·&nbsp; 南京大学智能科学与技术学院 &nbsp;·&nbsp; LAMDA 实验室
+    &nbsp;·&nbsp; Hosted on <a href="https://pages.github.com" target="_blank" rel="noopener">GitHub Pages</a>
+</footer>
 
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-        // Nav active link highlight
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('.nav-links a');
-
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const top = section.offsetTop - 80;
-                if (window.scrollY >= top) current = section.getAttribute('id');
-            });
-            navLinks.forEach(link => {
-                link.style.color = link.getAttribute('href') === '#' + current
-                    ? 'var(--primary)'
-                    : '';
-            });
-        });
-    </script>
 </body>
 </html>
