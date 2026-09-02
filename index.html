@@ -6,8 +6,8 @@
 
     <!-- ===== SEO: 基础 ===== -->
     <title>苏珉乐 (Su Minle) | 南京大学 LAMDA 实验室</title>
-    <meta name="description" content="苏珉乐（Su Minle，Min-Le Su），南京大学智能科学与技术学院硕士研究生，LAMDA实验室成员。研究方向：强化学习、神经符号Agent。Personal homepage of Su Minle, a graduate student at Nanjing University (NJU), LAMDA Lab. Research: Reinforcement Learning, Neuro-symbolic Agent.">
-    <meta name="keywords" content="苏珉乐, Su Minle, Min-Le Su, 南京大学, Nanjing University, NJU, LAMDA, 智能科学与技术, 强化学习, 神经符号Agent, Reinforcement Learning, Neuro-symbolic Agent, 机器学习, Machine Learning">
+    <meta name="description" content="苏珉乐（Su Minle，Min-Le Su），南京大学智能科学与技术学院硕士研究生，LAMDA实验室成员。研究方向：强化学习、Harness、AI游戏开发。Personal homepage of Su Minle, a graduate student at Nanjing University (NJU), LAMDA Lab. Research: Reinforcement Learning, Harness, AI Game Development.">
+    <meta name="keywords" content="苏珉乐, Su Minle, Min-Le Su, 南京大学, Nanjing University, NJU, LAMDA, 智能科学与技术, 强化学习, Harness, AI游戏开发, 机器学习, Machine Learning">
     <meta name="author" content="苏珉乐, Su Minle">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://rayburtray.github.io/">
@@ -15,7 +15,7 @@
     <!-- ===== SEO: Open Graph (微信/社交分享预览) ===== -->
     <meta property="og:type" content="profile">
     <meta property="og:title" content="苏珉乐 (Su Minle) | 南京大学 LAMDA 实验室">
-    <meta property="og:description" content="南京大学智能科学与技术学院硕士研究生，LAMDA实验室成员。研究方向：强化学习、神经符号Agent。">
+    <meta property="og:description" content="南京大学智能科学与技术学院硕士研究生，LAMDA实验室成员。研究方向：强化学习、Harness、AI游戏开发。">
     <meta property="og:url" content="https://rayburtray.github.io/">
     <meta property="og:locale" content="zh_CN">
     <meta property="og:locale:alternate" content="en_US">
@@ -25,7 +25,7 @@
     <!-- ===== SEO: Twitter Card ===== -->
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="苏珉乐 (Su Minle) | 南京大学 LAMDA">
-    <meta name="twitter:description" content="南京大学智能科学与技术学院硕士研究生，LAMDA实验室成员。强化学习 & 神经符号Agent。">
+    <meta name="twitter:description" content="南京大学智能科学与技术学院硕士研究生，LAMDA实验室成员。强化学习、Harness、AI游戏开发。">
 
     <!-- ===== SEO: JSON-LD 结构化数据 ===== -->
     <script type="application/ld+json">
@@ -56,7 +56,7 @@
         "name": "南京大学",
         "alternateName": "Nanjing University"
       },
-      "knowsAbout": ["强化学习", "Reinforcement Learning", "神经符号Agent", "Neuro-symbolic Agent", "机器学习", "Machine Learning"],
+      "knowsAbout": ["强化学习", "Reinforcement Learning", "Harness", "AI游戏开发", "AI Game Development", "机器学习", "Machine Learning"],
       "award": [
         "AAAI 2026 Bridge LMReasoning Outstanding Paper Award",
         "国家奖学金 2025",
@@ -334,16 +334,17 @@
 
         /* Research */
         .research-list {
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
             gap: 0.6rem;
         }
 
         .research-item {
             display: flex;
             gap: 0.9rem;
-            align-items: flex-start;
-            padding: 0.75rem 1rem;
+            align-items: center;
+            min-width: 0;
+            padding: 0.75rem 0.8rem;
             background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 8px;
@@ -374,13 +375,136 @@
             font-weight: 600;
             color: var(--primary);
             font-size: 0.9rem;
-            margin-bottom: 0.2rem;
+            line-height: 1.35;
         }
 
-        .research-desc {
-            font-size: 0.82rem;
+        /* Publications */
+        .publication-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+        }
+
+        .publication-item {
+            display: grid;
+            grid-template-columns: 2rem 1fr;
+            gap: 0.8rem;
+            padding: 0.85rem 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--primary-light);
+            border-radius: 8px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .publication-item:hover {
+            border-color: rgba(42,82,152,0.3);
+            box-shadow: 0 2px 10px rgba(26,58,92,0.07);
+        }
+
+        .publication-index {
+            padding-top: 0.1rem;
+            color: var(--accent);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+        }
+
+        .publication-title {
+            margin-bottom: 0.28rem;
+            color: var(--primary);
+            font-size: 0.9rem;
+            font-weight: 600;
+            line-height: 1.45;
+        }
+
+        .publication-title a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .publication-title a:hover { text-decoration: underline; }
+
+        .publication-authors {
             color: var(--text-muted);
-            line-height: 1.6;
+            font-size: 0.8rem;
+            line-height: 1.55;
+        }
+
+        .publication-authors strong {
+            color: var(--text);
+            font-weight: 600;
+        }
+
+        .publication-meta {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+            margin-top: 0.45rem;
+        }
+
+        .publication-note,
+        .publication-link,
+        .publication-award {
+            display: inline-flex;
+            align-items: center;
+            min-height: 1.35rem;
+            padding: 0.1rem 0.5rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .publication-note {
+            background: rgba(26,58,92,0.07);
+            color: var(--primary);
+        }
+
+        .publication-link {
+            background: rgba(42,82,152,0.1);
+            color: var(--primary-light);
+            text-decoration: none;
+        }
+
+        .publication-link:hover { text-decoration: underline; }
+
+        .publication-award {
+            background: rgba(184,150,78,0.14);
+            color: var(--accent);
+        }
+
+        /* Internship */
+        .internship-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+        }
+
+        .internship-item {
+            display: flex;
+            align-items: baseline;
+            gap: 0.8rem;
+            padding: 0.7rem 0.9rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--accent);
+            border-radius: 7px;
+        }
+
+        .internship-period {
+            min-width: 120px;
+            flex-shrink: 0;
+            color: var(--accent);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.03em;
+        }
+
+        .internship-org {
+            color: var(--primary);
+            font-size: 0.88rem;
+            font-weight: 600;
         }
 
         /* Lab */
@@ -535,6 +659,9 @@
             .sidebar-links { align-items: center; }
 
             .edu-item { grid-template-columns: 1fr; gap: 0.3rem; }
+            .research-list { grid-template-columns: 1fr; }
+            .internship-item { flex-direction: column; gap: 0.15rem; }
+            .internship-period { min-width: 0; }
         }
     </style>
 </head>
@@ -546,8 +673,9 @@
         <li><a href="#about">关于</a></li>
         <li><a href="#education">教育</a></li>
         <li><a href="#research">研究</a></li>
+        <li><a href="#publication">Publication</a></li>
+        <li><a href="#internship">实习</a></li>
         <li><a href="#awards">荣誉</a></li>
-        <li><a href="#lab">实验室</a></li>
     </ul>
 </nav>
 
@@ -596,8 +724,7 @@
                 你好！我是<strong>苏珉乐</strong>，南京大学智能科学与技术学院硕士研究生，
                 隶属于<strong>LAMDA 实验室</strong>（Learning And Mining from DatA，周志华教授团队）。
                 本科同样就读于南京大学智能科学与技术学院，具备扎实的人工智能理论基础。
-                目前专注于<strong>强化学习</strong>与<strong>神经符号 Agent</strong> 方向的研究，
-                致力于融合神经网络的感知能力与符号推理的可解释性，构建更具通用性的智能体学习范式。
+                目前专注于<strong>强化学习</strong>、<strong>Harness</strong> 与<strong>AI 游戏开发</strong>方向的研究。
             </p>
         </div>
 
@@ -633,16 +760,65 @@
                 <div class="research-item">
                     <div class="research-icon"><i class="fa-solid fa-chart-line"></i></div>
                     <div class="research-body">
-                        <div class="research-title">强化学习（Reinforcement Learning）</div>
-                        <div class="research-desc">研究智能体在与环境交互中学习最优决策的理论与算法，关注样本效率、探索策略与泛化能力等核心问题。</div>
+                        <div class="research-title">强化学习</div>
                     </div>
                 </div>
                 <div class="research-item">
-                    <div class="research-icon"><i class="fa-solid fa-diagram-project"></i></div>
+                    <div class="research-icon"><i class="fa-solid fa-link"></i></div>
                     <div class="research-body">
-                        <div class="research-title">神经符号 Agent（Neuro-symbolic Agent）</div>
-                        <div class="research-desc">融合神经网络的感知能力与符号推理的可解释性，构建具有更强泛化性与推理能力的智能体系统。</div>
+                        <div class="research-title">Harness</div>
                     </div>
+                </div>
+                <div class="research-item">
+                    <div class="research-icon"><i class="fa-solid fa-gamepad"></i></div>
+                    <div class="research-body">
+                        <div class="research-title">AI 游戏开发</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section" id="publication">
+            <div class="sec-title">Publication</div>
+            <div class="publication-list">
+                <article class="publication-item">
+                    <div class="publication-index">01</div>
+                    <div class="publication-body">
+                        <div class="publication-title">Harness-of-Harness: Multi-Day Autonomous Software Development with Continual Improvement</div>
+                        <div class="publication-authors">
+                            <strong>Haoyang Yan<sup>†</sup>, Min-Le Su<sup>†</sup>, Hangfan Zhang<sup>†</sup>, Zhanhao Li<sup>†</sup></strong>, Chen Zhang, Shao Zhang, Yang Chen, Lei Bai, Shuyue Hu
+                        </div>
+                        <div class="publication-meta">
+                            <span class="publication-note">† 共同第一作者</span>
+                            <a class="publication-link" href="https://arxiv.org/pdf/2609.01481" target="_blank" rel="noopener">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>&nbsp; arXiv PDF
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="publication-item">
+                    <div class="publication-index">02</div>
+                    <div class="publication-body">
+                        <div class="publication-title">Abductive State Grounding For Neuro-Symbolic Reinforcement Learning</div>
+                        <div class="publication-authors">
+                            <strong>Min-Le Su<sup>*</sup>, Kai-Yu Chen<sup>*</sup></strong>, Jiong-Da Wang, YiKuan Hu, Wang-Zhou Dai
+                        </div>
+                        <div class="publication-meta">
+                            <span class="publication-note">* 共同第一作者</span>
+                            <span class="publication-award">AAAI 2026 Bridge LMReasoning Outstanding Paper Award</span>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+
+        <div class="section" id="internship">
+            <div class="sec-title">实习经历</div>
+            <div class="internship-list">
+                <div class="internship-item">
+                    <div class="internship-period">2026.04 — 至今</div>
+                    <div class="internship-org">上海人工智能实验室</div>
                 </div>
             </div>
         </div>
@@ -689,23 +865,6 @@
                     <div class="award-year">2023</div>
                     <div class="award-name">网易雷火 Makers 最佳艺术表现提名奖</div>
                     <span class="award-tag competition">竞赛</span>
-                </div>
-            </div>
-        </div>
-
-        <div class="section" id="lab">
-            <div class="sec-title">所属实验室</div>
-            <div class="lab-item">
-                <div class="lab-icon"><i class="fa-solid fa-atom"></i></div>
-                <div class="lab-info">
-                    <div class="lab-name">LAMDA 实验室</div>
-                    <div class="lab-sub">Learning And Mining from DatA &nbsp;·&nbsp; 南京大学 · 周志华教授团队</div>
-                    <div class="lab-tags">
-                        <span class="lab-tag">强化学习</span>
-                        <span class="lab-tag">神经符号 Agent</span>
-                        <span class="lab-tag">机器学习</span>
-                        <span class="lab-tag">数据挖掘</span>
-                    </div>
                 </div>
             </div>
         </div>
